@@ -1,6 +1,7 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, unnecessary_string_interpolations
+// ignore_for_file: file_names, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, unnecessary_string_interpolations, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class ItemsWidget extends StatefulWidget {
   @override
@@ -59,6 +60,30 @@ class _ItemsWidgetState extends State<ItemsWidget> {
     "IDR 140.000",
   ];
 
+  final List<String> listRating = [
+    "4.5",
+    "3.8",
+    "4.2",
+    "4.7",
+    "4.0",
+    "4.2",
+    "3.9",
+    "4.5",
+    "4.5",
+  ];
+
+  final List<String> listSales = [
+    "238",
+    "115",
+    "320",
+    "157",
+    "82",
+    "184",
+    "201",
+    "95",
+    "250",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -85,7 +110,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 });
               },
               icon: Icon(Icons.grid_view),
-              color: isGridView ? Colors.blue : Colors.grey,
+              color: isGridView ? Color(0xFF004D40) : Colors.grey,
             ),
             IconButton(
               onPressed: () {
@@ -94,7 +119,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 });
               },
               icon: Icon(Icons.list),
-              color: isGridView ? Colors.grey : Colors.blue,
+              color: isGridView ? Colors.grey : Color(0xFF004D40),
             ),
           ],
         ),
@@ -108,7 +133,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
   // Fungsi untuk membuat tampilan Grid View
   Widget buildGridView() {
     return GridView.count(
-      childAspectRatio: 0.64,
+      childAspectRatio: 0.61,
       physics: NeverScrollableScrollPhysics(),
       crossAxisCount: 2,
       shrinkWrap: true,
@@ -232,7 +257,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${listHarga[i]}",
+                    listHarga[i],
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -254,9 +279,9 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${listHarga[i]}",
+                    listHarga[i],
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       color: Color(0xFF004D40),
                       decoration: TextDecoration.lineThrough,
                     ),
@@ -264,6 +289,43 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                 ],
               ),
             ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 5),
+            child: Row(
+              children: [
+                Text(
+                  listRating[i],
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFF004D40),
+                  ),
+                ),
+                SizedBox(width: 5),
+                Icon(
+                  Icons.star,
+                  size: 13,
+                  color: Color(0xFF004D40),
+                ),
+                SizedBox(width: 5),
+                Text(
+                  "|",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF004D40),
+                  ),
+                ),
+                SizedBox(width: 5),
+                Text(
+                  "${listSales[i]} Terjual",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFF004D40),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
